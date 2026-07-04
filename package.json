@@ -1,19 +1,46 @@
 {
   "name": "accounting-mcp-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Production-ready Model Context Protocol (MCP) server for accounting platforms.",
+  "author": "ReetAI",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/app/index.js",
+    "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/app/index.ts",
+    "build": "tsc",
+    "start": "node ./dist/app/index.js",
+    "clean": "rm -rf dist",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "check": "npm run typecheck && npm run lint && npm run test",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reetaisync/accounting-mcp-server.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "quickbooks",
+    "accounting",
+    "ai",
+    "typescript",
+    "fastify",
+    "llm",
+    "claude",
+    "cursor"
+  ],
   "bugs": {
     "url": "https://github.com/reetaisync/accounting-mcp-server/issues"
   },
