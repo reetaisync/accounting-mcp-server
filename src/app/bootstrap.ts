@@ -1,4 +1,6 @@
 import logger from "../core/logger/logger.js";
+import { createMcpServer } from "../mcp/mcp-server.js";
+import { connectStdio } from "../mcp/transport/stdio.js";
 import { ApplicationContainer } from "./container.js";
 
 export class Bootstrap {
@@ -8,7 +10,10 @@ export class Bootstrap {
         logger.info("Bootstrapping Accounting MCP Server...");
 
         const container = new ApplicationContainer();
-        await container.accountingService.connect();
+
+        const server = createMcpServer(container);
+
+        await connectStdio(server);
 
         logger.info("Application Container initialized.");
         logger.info("Accounting Service initialized.");
