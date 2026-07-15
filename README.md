@@ -1,5 +1,5 @@
 # accounting-mcp-server
-Production-ready Model Context Protocol (MCP) server for accounting platforms like QuickBooks, built with TypeScript, Fastify, and the official MCP SDK.
+Enterprise-grade Model Context Protocol (MCP) server for accounting platforms and AI agents.
 
 Topics:
 
