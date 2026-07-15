@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/reetai-logo.png" alt="ReetAI Logo" width="150" />
+  <img src="./assets/reetai-logo.jpeg" alt="ReetAI Logo" width="150" />
 </div>
 
 # ReetAI Accounting MCP Server
