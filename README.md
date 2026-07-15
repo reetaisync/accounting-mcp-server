@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="./assets/reetai-logo.png" alt="ReetAI Logo" width="150" />
+</div>
+
 # ReetAI Accounting MCP Server
 
 Enterprise-grade Model Context Protocol (MCP) server for accounting platforms, AI agents, and financial automation.
