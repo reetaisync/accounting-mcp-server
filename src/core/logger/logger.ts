@@ -1,17 +1,7 @@
 import pino from "pino";
-import config from "../config/config.js";
 
 const logger = pino({
-    level: config.LOG_LEVEL,
-
-    transport: {
-        target: "pino-pretty",
-        options: {
-            colorize: true,
-            translateTime: "SYS:standard",
-            ignore: "pid,hostname"
-        }
-    }
+    enabled: false,
 });
 
 export default logger;

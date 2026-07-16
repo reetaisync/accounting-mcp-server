@@ -1,9 +1,9 @@
-import type { AccountingProvider } from "../domain/interfaces/AccountingProvider.js";
+import type { IAccountingProvider } from "../sdk/provider/IAccountingProvider.js";
 import type { Company } from "../domain/models/Company.js";
 
 export class AccountingService {
     constructor(
-        private readonly provider: AccountingProvider
+        private readonly provider: IAccountingProvider
     ) {}
 
     async connect(): Promise<void> {
