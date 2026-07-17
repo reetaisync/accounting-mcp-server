@@ -1,37 +1,32 @@
-import { OAuthConfig } from "./OAuthConfig.js";
 import crypto from "node:crypto";
+import { OAuthConfig } from "./OAuthConfig.js";
 
 export class IntuitOAuth {
 
     constructor(
-        private readonly config: OAuthConfig
+        private readonly config: OAuthConfig,
     ) {}
 
-    createAuthorizationUrl() {
+    createAuthorizationUrl(): string {
 
-        const state = crypto.randomUUID();
+    console.log("IntuitOAuth clientId:", this.config.clientId);
+    console.log("IntuitOAuth redirectUri:", this.config.redirectUri);
 
-        const base =
-            this.config.environment === "production"
-                ? "https://appcenter.intuit.com/connect/oauth2"
-                : "https://appcenter.intuit.com/connect/oauth2";
+    const base = "https://appcenter.intuit.com/connect/oauth2";
 
-        const params = new URLSearchParams({
+    const params = new URLSearchParams({
+        client_id: this.config.clientId,
+        response_type: "code",
+        scope: "com.intuit.quickbooks.accounting",
+        redirect_uri: this.config.redirectUri,
+        state: crypto.randomUUID(),
+    });
 
-            client_id: this.config.clientId,
+    const url = `${base}?${params.toString()}`;
 
-            response_type: "code",
+    console.log("OAuth URL:", url);
 
-            scope: "com.intuit.quickbooks.accounting",
-
-            redirect_uri: this.config.redirectUri,
-
-            state,
-
-        });
-
-        return `${base}?${params.toString()}`;
-
-    }
+    return url;
+}
 
 }

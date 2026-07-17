@@ -18,4 +18,26 @@ export class OAuthController {
 
     }
 
+    async callback(
+        request: FastifyRequest<{
+            Querystring: {
+                code: string;
+                realmId: string;
+                state: string;
+            };
+        }>,
+        reply: FastifyReply,
+    ): Promise<void> {
+
+        console.log("Authorization Code:", request.query.code);
+        console.log("Realm ID:", request.query.realmId);
+
+        reply.send({
+            success: true,
+            code: request.query.code,
+            realmId: request.query.realmId,
+        });
+
+    }
+
 }
