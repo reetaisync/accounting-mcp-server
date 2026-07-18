@@ -19,25 +19,26 @@ export class OAuthController {
     }
 
     async callback(
-        request: FastifyRequest<{
-            Querystring: {
-                code: string;
-                realmId: string;
-                state: string;
-            };
-        }>,
-        reply: FastifyReply,
-    ): Promise<void> {
+    request: FastifyRequest<{
+        Querystring: {
+            code: string;
+            realmId: string;
+            state: string;
+        };
+    }>,
+    reply: FastifyReply,
+): Promise<void> {
 
-        console.log("Authorization Code:", request.query.code);
-        console.log("Realm ID:", request.query.realmId);
+    await this.oauthService.exchangeCode(
+        request.query.code,
+    );
 
-        reply.send({
-            success: true,
-            code: request.query.code,
-            realmId: request.query.realmId,
-        });
+    reply.send({
+        success: true,
+        message: "QuickBooks connected successfully!",
+        realmId: request.query.realmId,
+    });
 
-    }
+}
 
 }
