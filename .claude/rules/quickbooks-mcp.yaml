@@ -1,0 +1,10 @@
+title: "QuickBooks Tool Protocol Structure Constraints"
+slug: "qb-tool-constraints"
+description: "Maintains structured protocol standards across individual financial API connectors."
+globs:
+  - "src/tools/**/*.ts"
+  - "src/services/**/*.ts"
+rules:
+  - "Every distinct MCP tool routine must expose a detailed, plain-English descriptive summary defining explicit context triggers so Claude understands when to pull ledger arrays."
+  - "Isolate account management tasks cleanly. Never allow a combined utility to handle both read-only balances and dangerous mutate states concurrently."
+  - "Enforce strict standardized date fields (YYYY-MM-DD) across incoming argument models to protect ERP audit histories from regional formatting errors."
