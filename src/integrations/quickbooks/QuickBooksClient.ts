@@ -25,4 +25,14 @@ export class QuickBooksClient {
 
     }
 
+    async getCompany(
+        realmId: string,
+    ): Promise<any> {
+
+        return this.get(
+            `https://sandbox-quickbooks.api.intuit.com/v3/company/${realmId}/companyinfo/${realmId}?minorversion=75`,
+        );
+
+    }
+
 }

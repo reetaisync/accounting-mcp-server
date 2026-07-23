@@ -30,8 +30,9 @@ export class OAuthController {
 ): Promise<void> {
 
     await this.oauthService.exchangeCode(
-        request.query.code,
-    );
+    request.query.code,
+    request.query.realmId,
+);
 
     reply.send({
         success: true,

@@ -1,5 +1,6 @@
 import Fastify from "fastify";
 import type { ApplicationContainer } from "./container.js";
+import { QuickBooksService } from "../integrations/quickbooks/QuickBooksService.js";
 
 export function createServer(
     container: ApplicationContainer,
@@ -8,6 +9,11 @@ export function createServer(
     const app = Fastify({
         logger: false,
     });
+
+    const quickBooksService =
+        new QuickBooksService(
+            container.tokenStore,
+        );
 
     app.get("/", async () => {
 
@@ -46,6 +52,12 @@ export function createServer(
         return {
             connected: await container.oauthService.isConnected(),
         };
+
+    });
+
+    app.get("/company", async () => {
+
+        return await quickBooksService.getCompany();
 
     });
 

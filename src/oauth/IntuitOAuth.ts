@@ -24,8 +24,9 @@ export class IntuitOAuth {
     }
 
     async exchangeCode(
-        code: string,
-    ): Promise<OAuthToken> {
+    code: string,
+    realmId: string,
+): Promise<OAuthToken> {
 
         const credentials = Buffer.from(
             `${this.config.clientId}:${this.config.clientSecret}`,
@@ -64,11 +65,12 @@ export class IntuitOAuth {
 const json = await response.json() as IntuitTokenResponse;
 
         return {
-            accessToken: json.access_token,
-            refreshToken: json.refresh_token,
-            expiresIn: json.expires_in,
-            tokenType: json.token_type,
-        };
+    accessToken: json.access_token,
+    refreshToken: json.refresh_token,
+    expiresIn: json.expires_in,
+    tokenType: json.token_type,
+    realmId,
+};
     }
 
 }
