@@ -18,7 +18,9 @@ export class QuickBooksClient {
         });
 
         if (!response.ok) {
-            throw new Error(await response.text());
+            throw new Error(
+                `QuickBooks API Error (${response.status}): ${await response.text()}`,
+            );
         }
 
         return await response.json() as T;
